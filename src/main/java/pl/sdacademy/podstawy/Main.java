@@ -17,15 +17,20 @@ public class Main {
 
         Employee employee1 = new Employee("Hans", "M\u00fcller", LocalDate.of(1956, 6, 16));
         Employee employee2 = new Employee("Helga", "Schweinsteiger", LocalDate.of(1961, 7, 24));
+        Employee employee3 = new Employee("Jan", "Kowalski", LocalDate.of(1985, 1, 21));
+        Employee employee4 = new Employee("Anna", "Nowak", LocalDate.of(1966, 4, 28));
 
         volkswagen.setEmployees(employee1, employee2);
-
-        terravita.setEmployees(null);
+        terravita.setEmployees(employee3, employee4);
 
         for (Company company : new Company[]{terravita, volkswagen}) {
             for (Employee employee : company.getEmployees()) {
-                System.out.printf("Nazwa firmy: %s, Pracownik: %s\n", company, employee);
+                System.out.printf("Kraj: %s, Nazwa firmy: %s, Pracownik: %s\n", company.getCountry(), company, employee);
             }
+        }
+
+        for (Employee employee : volkswagen.getRetiredEmployees(LocalDate.of(2040, 4, 4))) {
+            System.out.println(employee.toString());
         }
 
     }
