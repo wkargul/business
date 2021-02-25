@@ -1,5 +1,6 @@
 package pl.sdacademy.podstawy;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 
@@ -41,12 +42,30 @@ public class Company {
         Employee[] retiredEmployees = new Employee[employees.length];
         int count = 0;
         for (Employee employee : employees) {
-            if (employee.isRetired(localDate,country)) {
+            if (employee.isRetired(localDate, country)) {
                 retiredEmployees[count] = employee;
                 count++;
             }
         }
-        return Arrays.copyOf(retiredEmployees,count);
+        return Arrays.copyOf(retiredEmployees, count);
 
     }
+
+    public Employee[] getRetiredEmployees() {
+        return getRetiredEmployees(LocalDate.now());
+    }
+
+    public Employee[] getRetiredEmployees(String date) {
+        return getRetiredEmployees(LocalDate.parse(date));
+    }
+
+    public void raise(BigDecimal payRaise){
+        for ( Employee employee : employees){
+            employee.raise(payRaise);
+        }
+
+    }
+
+
+
 }
